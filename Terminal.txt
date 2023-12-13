@@ -1,0 +1,145 @@
+mysql> CREATE TABLE Movies(movie_id INT, title VARCHAR(100), director VARCHAR(50),relase_year INT, genre VARCHAR(50));
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> ALTER TABLE Movies ADD COLUMN rating DECIMAL(3,1);
+Query OK, 0 rows affected (0,02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE Movies;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| movie_id    | int          | YES  |     | NULL    |       |
+| title       | varchar(100) | YES  |     | NULL    |       |
+| director    | varchar(50)  | YES  |     | NULL    |       |
+| relase_year | int          | YES  |     | NULL    |       |
+| genre       | varchar(50)  | YES  |     | NULL    |       |
+| rating      | decimal(3,1) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+6 rows in set (0,00 sec)
+
+mysql> DROP TABLE Students;
+ERROR 1051 (42S02): Unknown table 'mydb.Students'
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_mydb |
++----------------+
+| Employee       |
+| Movies         |
+| Student        |
+| users          |
+| users2         |
++----------------+
+5 rows in set (0,00 sec)
+
+mysql> CREATE TABLE Students(student_id INT, student_name VARCHAR(50), age INT, grade VARCHAR(2));
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_mydb |
++----------------+
+| Employee       |
+| Movies         |
+| Student        |
+| Students       |
+| users          |
+| users2         |
++----------------+
+6 rows in set (0,00 sec)
+
+mysql> DESCRIBE Students;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| student_id   | int         | YES  |     | NULL    |       |
+| student_name | varchar(50) | YES  |     | NULL    |       |
+| age          | int         | YES  |     | NULL    |       |
+| grade        | varchar(2)  | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0,01 sec)
+
+mysql> DROP TABLE Students;
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_mydb |
++----------------+
+| Employee       |
+| Movies         |
+| Student        |
+| users          |
+| users2         |
++----------------+
+5 rows in set (0,00 sec)
+
+mysql> CREATE TABLE Events(event_id INT, event_name VARCHAR(100), date DATE, location VARCHAR(100));
+Query OK, 0 rows affected (0,03 sec)
+
+mysql> INSERT INTO Events VALUES(1,'Party','2023-12-15','Bremen'),
+    -> (2,'Football match','2023-12-24','berlin');
+Query OK, 2 rows affected (0,01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM Events;
++----------+----------------+------------+----------+
+| event_id | event_name     | date       | location |
++----------+----------------+------------+----------+
+|        1 | Party          | 2023-12-15 | Bremen   |
+|        2 | Football match | 2023-12-24 | berlin   |
++----------+----------------+------------+----------+
+2 rows in set (0,00 sec)
+
+mysql> TRUNCATE TABLE Events;
+Query OK, 0 rows affected (0,04 sec)
+
+mysql> SELECT * FROM Events;
+Empty set (0,00 sec)
+
+mysql> DESCRIBE Events;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| event_id   | int          | YES  |     | NULL    |       |
+| event_name | varchar(100) | YES  |     | NULL    |       |
+| date       | date         | YES  |     | NULL    |       |
+| location   | varchar(100) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+4 rows in set (0,00 sec)
+
+mysql> CREATE TABLE Resturants(resturant_id INT, name VARCHAR(50), cuisine VARCHAR(50), location VARCHAR(100));
+Query OK, 0 rows affected (0,03 sec)
+
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_mydb |
++----------------+
+| Employee       |
+| Events         |
+| Movies         |
+| Resturants     |
+| Student        |
+| users          |
+| users2         |
++----------------+
+7 rows in set (0,00 sec)
+
+mysql> ALTER TABLE Resturants RENAME TO DiningSpots;
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_mydb |
++----------------+
+| DiningSpots    |
+| Employee       |
+| Events         |
+| Movies         |
+| Student        |
+| users          |
+| users2         |
++----------------+
+7 rows in set (0,00 sec)
+
+mysql> 
